@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+import { book } from './book';
+import { PieChartProvider } from './components/Piechart/PiechartContext';
+import { ChartPage, FormPage } from './page';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <PieChartProvider>
+        <Switch>
+            <Route
+                exact
+                path={ book.chart }
+                component={ ChartPage }
+            />
+            <Route
+                exact
+                path={ book.form }
+                component={ FormPage }
+            />
+            <Redirect to='/' />
+        </Switch>
+      </PieChartProvider>
   );
 }
 
