@@ -1,1 +1,0 @@
-export { Piechart } from './Piechart';

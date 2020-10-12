@@ -1,0 +1,13 @@
+.toast {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 5px 15px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    color: var(--pallete-color2);
+    font-weight: 700;
+    background-color: var(--pallete-color4);
+    width: max-content;
+    transition: all .3s ease;
+}

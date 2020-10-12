@@ -7,16 +7,12 @@
     margin: auto;
 }
 
-.form {
-
-}
-
 .field {
     padding: 10px;
     box-sizing: border-box;
     font-family: sans-serif, Arial;
-    border: 1px solid #6A6969;
-    color: #000000;
+    border: 1px solid var(--pallete-color5);
+    color: var(--pallete-color1);
     font-size: 16px;
     border-radius: 3px;
     width: 100%;
@@ -25,6 +21,7 @@
 .field {
     margin-right: 10px;
 }
+
 .field:nth-child(2) {
     max-width: 90px;
 }
@@ -32,15 +29,23 @@
 .fieldGroup {
     padding: 5px;
     display: flex;
+    transition: background-color .3s ease;
+    border-radius: 3px;
 }
+
+.fieldGroup:hover {
+    background-color: rgba(104, 104, 104, 0.15);
+}
+
 .remove {
     padding: 6px 7px;
     font-size: 20px;
     font-family: sans-serif, Arial;
     font-weight: 700;
     text-transform: uppercase;
-    color: #ff0000;
+    color: var(--pallete-color6);
 }
+
 .button {
     padding: 12px 40px;
     border: none;
@@ -49,12 +54,12 @@
     font-family: sans-serif, Arial;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: #6394ec;
+    background-color: var(--pallete-color7);
     border-radius: 3px;
-    color: #ffffff;
+    color: var(--pallete-color2);
     transition: background-color .3s ease;
 }
 
 .button:hover {
-    background-color: #2e59a1;
+    background-color: var(--pallete-color8);
 }

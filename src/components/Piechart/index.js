@@ -1,1 +1,4 @@
-export { Piechart } from './Piechart';
+import Piechart  from './Piechart';
+import PiechartContext from './PiechartContext';
+
+export { Piechart };

@@ -1,3 +1,14 @@
+:root {
+  --pallete-color1: #000000;
+  --pallete-color2: #ffffff;
+  --pallete-color3: #e3e3e3;
+  --pallete-color4: #0101cb;
+  --pallete-color5: #6A6969;
+  --pallete-color6: #ff0000;
+  --pallete-color7: #6394ec;
+  --pallete-color8: #2e59a1;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +21,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e3e3e3;
+  background-color: var(--pallete-color3);
 }
 
 code {
@@ -19,40 +30,24 @@ code {
 }
 
 .wrapper {
+  position: relative;
   display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
   padding: 50px;
 }
+
 .pie-chart {
   position: relative;
 }
+
 .pie-chart-value {
   fill: none;
   stroke-width: 150;
   transition: all .3s ease;
   position: relative;
 }
-
-/*.pie-chart-value .small {*/
-/*  display: block;*/
-/*  z-index: 3;*/
-/*  color: #000000;*/
-/*  position: absolute;*/
-/*  left: 50%;*/
-/*  top: 50%;*/
-/*  font-size: 16px;*/
-/*}*/
-
-/*.pie-chart-value.active .small {*/
-/*  display: block;*/
-/*  z-index: 3;*/
-/*  color: #000000;*/
-/*  position: absolute;*/
-/*  left: 50%;*/
-/*  top: 50%;*/
-/*  font-size: 16px;*/
-/*}*/
 
 .pie-values li {
   position: relative;

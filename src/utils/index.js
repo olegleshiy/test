@@ -1,12 +1,3 @@
-export const drawPieSlice = (ctx, centerX, centerY, radius, startAngle, endAngle, color) => {
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(centerY, centerY);
-    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-    ctx.closePath();
-    ctx.fill();
-}
-
 export const getRandomColor = () => {
     const letters = '0123456789ABCDEF';
     let color = '#';

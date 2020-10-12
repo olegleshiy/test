@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { book } from '../../book';
 import styles from './Header.module.css';
 
-export const Header = () => {
+const Header = () => {
     return (
         <div className={styles.header}>
             <ul>
@@ -14,3 +14,5 @@ export const Header = () => {
         </div>
     );
 }
+
+export default Header;

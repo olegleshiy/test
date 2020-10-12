@@ -1,7 +1,7 @@
 .header {
-    background-color: #0101d0;
+    background-color: var(--pallete-color4);
     padding: 16px 16px;
-    color: #ffffff;
+    color: var(--pallete-color2);
 }
 
 .header ul {
@@ -19,5 +19,5 @@
     font-weight: 700;
     padding: 5px 15px;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--pallete-color2);
 }

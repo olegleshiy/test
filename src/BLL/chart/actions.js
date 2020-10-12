@@ -19,23 +19,15 @@ export const actions = {
             payload,
         }
     },
-    formAdd: (payload) => {
+    toastShow: (payload) => {
         return {
-            type: types.FORM_ADD,
+            type: types.TOAST_SHOW,
             payload,
         }
     },
-    formDelete: (payload) => {
+    toastHide: () => {
         return {
-            type: types.FORM_DELETE,
-            payload,
-        }
-    },
-    formChange: (payload) => {
-        console.log('ACTION', payload);
-        return {
-            type: types.FORM_CHANGE,
-            payload,
+            type: types.TOAST_HIDE,
         }
     }
 }

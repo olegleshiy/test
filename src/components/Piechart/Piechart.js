@@ -1,25 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { usePieChart } from './PiechartContext';
+import { Toast } from '../Toast';
 
-//import styles from './Piechart.module.css';
-
-export const Piechart = props => {
+const Piechart = () => {
     const [list, setList] = useState([]);
     const [listInfo, setListInfo] = useState([]);
-
     const circleRef = useRef();
-
-    const { fruit, forms } = usePieChart();
+    const { position, toastShow, toastHide, text, visible } = usePieChart();
 
     const handleHover = (e) => {
-        // const cont = circleRef.current = e.target;
-        // cont.classList.add('active');
-        // console.log(cont.dataset.name);
+        const cont = circleRef.current = e.target;
+
+        toastShow(cont.dataset.name);
     };
     const handleHoverLeave = (e) => {
-        // const cont = circleRef.current = e.target;
-        // cont.classList.remove('active');
-        // console.log(cont.dataset.name);
+
+        toastHide();
     };
 
     useEffect(() => {
@@ -28,20 +24,21 @@ export const Piechart = props => {
         let spaceLeft = circleLength;
         let totalCount = 0;
 
-        totalCount = fruit.reduce((acc, curr, idx) => acc + curr.count, 0);
+        totalCount = position.reduce((acc, curr, idx) => acc + curr.count, 0);
+        let items = position.filter(pos => pos.count > 0 && pos.name !== '');
 
-        const listCircle = fruit.map((el, idx) => {
+        const listCircle = items.map((el, idx) => {
             let circle = (
                 <circle
                     ref={ circleRef }
                     onMouseOver={ handleHover }
                     onMouseLeave={ handleHoverLeave }
-                    className="pie-chart-value"
+                    className='pie-chart-value'
                     data-name={ el.name }
                     key={ idx }
                     r={ radius }
-                    cx="200"
-                    cy="200"
+                    cx='200'
+                    cy='200'
                     strokeDasharray={ (spaceLeft).toFixed(3) + ' ' + circleLength.toFixed(3) } stroke={ el.color }
                 />);
             spaceLeft -= (el.count / totalCount) * circleLength;
@@ -50,7 +47,7 @@ export const Piechart = props => {
 
         setList(listCircle);
 
-        const listInfoCircle = fruit.map((el, idx) => {
+        const listInfoCircle = items.map((el, idx) => {
             const percentage = ` (${ parseFloat((el.count /
                 totalCount * 100).toFixed(1)) }%)`;
             return (
@@ -64,17 +61,19 @@ export const Piechart = props => {
         });
         setListInfo(listInfoCircle);
 
-    }, [forms]);
-
+    }, [position]);
 
     return (
-        <div className={ 'wrapper' }>
-            <svg id="pie-chart" width="400" height="400">
+        <div className='wrapper'>
+            <svg id='pie-chart' width='400' height='400'>
                 { list }
             </svg>
-            <ul className="pie-values">
+            <ul className='pie-values'>
                 { listInfo }
             </ul>
+            { visible ? <Toast>{ text }</Toast> : null }
         </div>
     );
 };
+
+export default Piechart;

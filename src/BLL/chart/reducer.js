@@ -6,43 +6,39 @@ export const reducer = (state, action) => {
         case types.ITEM_ADD:
             return {
                 ...state,
-                fruit: [...state.fruit, action.payload],
+                position: [...state.position, action.payload],
             }
         case types.ITEM_DELETE:
             return {
                 ...state,
-                fruit: state.fruit.filter((el, id) => el.id !== action.payload),
+                position: state.position.filter((el, id) => el.id !== action.payload),
             }
         case types.ITEM_CHANGE:
             return {
-                ...state
-            }
-        case types.FORM_ADD:
-            return {
                 ...state,
-                forms: [...state.forms, action.payload],
-            }
-        case types.FORM_DELETE:
-            return {
-                ...state,
-                forms: state.forms.filter((el, id) => el.id !== action.payload),
-            }
-        case types.FORM_CHANGE:
-            console.log('->>BEFORE', action.payload);
-            return {
-                ...state,
-                forms: state.forms.map(form => {
-                    if(form.id === action.payload.id) {
-                        console.log('->>', action.payload);
-                        const keys = Object.keys(action.payload.field)[0];
+                position: state.position.map(item => {
+                    if(item.id === action.payload.id) {
+                        const [[keys, value]] = Object.entries(action.payload.field);
                         return {
-                            ...form,
-                            [keys]: action.payload.field,
+                            ...item,
+                            [keys]: value,
                         }
                     } else {
-                        return { ...form }
+                        return { ...item }
                     }
                 })
+            }
+        case types.TOAST_SHOW:
+            return {
+                ...state,
+                visible: true,
+                text: action.payload,
+            }
+        case types.TOAST_HIDE:
+            return {
+                ...state,
+                visible: false,
+                text: '',
             }
         default:
             return state;
